@@ -1,1 +1,1 @@
-![](https://travis-ci.org/gnastnosaj/Boilerplate.IPC.svg?branch=master)
+![](https://travis-ci.org/gnastnosaj/Boilerplate.Cordova.svg?branch=master)
