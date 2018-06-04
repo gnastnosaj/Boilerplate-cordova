@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+        classpath 'com.forufamily.gradle.plugin:tomato:1.0.5'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "com.android.support" && !requested.name.startsWith("multidex")) {
+                useVersion("27.1.0")
+            }
+        }
+    }
+}
+
+ext {
+    buildToolsVersion = '27.0.3'
+    targetSdkVersion = 27
+    minSdkVersion = 16
+    compileSdkVersion = targetSdkVersion
+    versionCode = 1
+    versionName = '1.0.0'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

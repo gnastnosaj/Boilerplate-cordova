@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Boilerplate.Cordova.iml" filepath="$PROJECT_DIR$/Boilerplate.Cordova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/cordova.iml" filepath="$PROJECT_DIR$/cordova/cordova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova-sample/cordova-sample.iml" filepath="$PROJECT_DIR$/cordova-sample/cordova-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.channel/cordova.channel.iml" filepath="$PROJECT_DIR$/cordova.channel/cordova.channel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.channel.middleware/cordova.channel.middleware.iml" filepath="$PROJECT_DIR$/cordova.channel.middleware/cordova.channel.middleware.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.channel.middleware-sample/cordova.channel.middleware-sample.iml" filepath="$PROJECT_DIR$/cordova.channel.middleware-sample/cordova.channel.middleware-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.crosswalk/cordova.crosswalk.iml" filepath="$PROJECT_DIR$/cordova.crosswalk/cordova.crosswalk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.crosswalk.ext/cordova.crosswalk.ext.iml" filepath="$PROJECT_DIR$/cordova.crosswalk.ext/cordova.crosswalk.ext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova.ext/cordova.ext.iml" filepath="$PROJECT_DIR$/cordova.ext/cordova.ext.iml" />
+    </modules>
+  </component>
+</project>
