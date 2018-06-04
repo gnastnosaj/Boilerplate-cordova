@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'tomato'
+//apply plugin: 'tomato'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion

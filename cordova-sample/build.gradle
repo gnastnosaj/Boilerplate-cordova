@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'tomato'
+//apply plugin: 'tomato'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -29,9 +29,9 @@ android {
         targetCompatibility 1.8
     }
 
-    tomato {
-        debug true
-    }
+//    tomato {
+//        debug true
+//    }
 }
 
 repositories {

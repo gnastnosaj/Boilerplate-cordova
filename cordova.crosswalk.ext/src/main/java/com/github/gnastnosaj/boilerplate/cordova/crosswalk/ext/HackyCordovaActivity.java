@@ -17,4 +17,13 @@ public abstract class HackyCordovaActivity extends com.github.gnastnosaj.boilerp
 
         return super.onMessage(id, data);
     }
+
+    @Override
+    public void loadUrl(String url) {
+        for (HackyXWalkWorkaround workaround : HackyXWalkWorkaround.WORKAROUND) {
+            workaround.when((XWalkCordovaView) appView.getView(), url);
+        }
+
+        super.loadUrl(url);
+    }
 }
