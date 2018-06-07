@@ -1,1 +1,2 @@
+rootProject.name = 'Boilerplate-cordova'
 include ':cordova', ':cordova.crosswalk', ':cordova.channel', ':cordova.ext', ':cordova.crosswalk.ext', ':cordova.channel.middleware', ':cordova-sample', ':cordova.channel.middleware-sample'
