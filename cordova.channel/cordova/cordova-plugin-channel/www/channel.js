@@ -60,7 +60,7 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
         }
       }
     } catch (e) {
-      Logger.error(service, e);
+      console.error(e);
     }
   }, function(data) {
     if(execTimeout) {
@@ -71,7 +71,7 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
         _this.callbacks[task].onError(data);
       }
     } catch (e) {
-      Logger.error(service, e);
+      console.error(e);
     }
   }, "Channel", "exec", [scheme, data]);
 
