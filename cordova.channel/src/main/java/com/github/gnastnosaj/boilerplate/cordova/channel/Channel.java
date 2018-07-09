@@ -116,6 +116,11 @@ public class Channel extends CordovaPlugin {
                                     }
 
                                     @Override
+                                    public void error(Throwable throwable) {
+                                        emitter.onError(throwable);
+                                    }
+
+                                    @Override
                                     public void end() {
                                         emitter.onComplete();
                                     }

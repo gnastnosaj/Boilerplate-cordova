@@ -57,10 +57,11 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
             _this.callbacks[task].onNext(data);
         }else if(_this.callbacks[task].onComplete) {
             _this.callbacks[task].onComplete();
+            delete _this.callbacks[task];
         }
       }
     } catch (e) {
-      Logger.error(service, e);
+      console.error(e);
     }
   }, function(data) {
     if(execTimeout) {
@@ -69,9 +70,10 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
     try {
       if (_this.callbacks[task] && _this.callbacks[task].onError) {
         _this.callbacks[task].onError(data);
+        delete _this.callbacks[task];
       }
     } catch (e) {
-      Logger.error(service, e);
+      console.error(e);
     }
   }, "Channel", "exec", [scheme, data]);
 

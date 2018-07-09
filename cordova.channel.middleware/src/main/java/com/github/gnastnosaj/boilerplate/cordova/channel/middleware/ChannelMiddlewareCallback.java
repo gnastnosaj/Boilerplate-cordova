@@ -9,5 +9,7 @@ import org.json.JSONObject;
 public interface ChannelMiddlewareCallback {
     void perform(JSONObject data);
 
+    void error(Throwable throwable);
+
     void end();
 }

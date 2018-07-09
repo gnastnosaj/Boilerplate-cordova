@@ -57,6 +57,7 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
             _this.callbacks[task].onNext(data);
         }else if(_this.callbacks[task].onComplete) {
             _this.callbacks[task].onComplete();
+            delete _this.callbacks[task];
         }
       }
     } catch (e) {
@@ -69,6 +70,7 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
     try {
       if (_this.callbacks[task] && _this.callbacks[task].onError) {
         _this.callbacks[task].onError(data);
+        delete _this.callbacks[task];
       }
     } catch (e) {
       console.error(e);
