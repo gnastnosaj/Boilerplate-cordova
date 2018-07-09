@@ -13,5 +13,5 @@ public interface ChannelMiddleware {
 
     boolean accept(String scheme);
 
-    void exec(String scheme, JSONArray data, ChannelMiddlewareCallback callback);
+    void exec(String scheme, JSONArray data, ChannelMiddlewareCallback callback) throws Throwable;
 }

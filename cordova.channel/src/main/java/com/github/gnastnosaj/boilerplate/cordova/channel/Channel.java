@@ -96,28 +96,35 @@ public class Channel extends CordovaPlugin {
 
         for (ChannelMiddleware middleware : middlewares) {
             if (middleware.accept(scheme)) {
-                observables.add(Observable.create(subscriber -> middleware.exec(scheme, data, new ChannelMiddlewareCallback() {
-                    @Override
-                    public void perform(JSONObject data) {
-                        if (data == null) {
-                            data = new JSONObject();
-                        }
-                        try {
-                            data.put("__channel__keep__", true);
-                        } catch (JSONException e) {
-                            subscriber.onError(e);
-                        }
-                        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, data);
-                        pluginResult.setKeepCallback(true);
-                        callbackContext.sendPluginResult(pluginResult);
-                        subscriber.onNext(data);
-                    }
+                observables.add(Observable.create(emitter -> {
+                            try {
+                                middleware.exec(scheme, data, new ChannelMiddlewareCallback() {
+                                    @Override
+                                    public void perform(JSONObject data) {
+                                        if (data == null) {
+                                            data = new JSONObject();
+                                        }
+                                        try {
+                                            data.put("__channel__keep__", true);
+                                        } catch (JSONException e) {
+                                            emitter.onError(e);
+                                        }
+                                        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, data);
+                                        pluginResult.setKeepCallback(true);
+                                        callbackContext.sendPluginResult(pluginResult);
+                                        emitter.onNext(data);
+                                    }
 
-                    @Override
-                    public void end() {
-                        subscriber.onComplete();
-                    }
-                })));
+                                    @Override
+                                    public void end() {
+                                        emitter.onComplete();
+                                    }
+                                });
+                            } catch (Throwable throwable) {
+                                emitter.onError(throwable);
+                            }
+                        }
+                ));
             }
         }
 
