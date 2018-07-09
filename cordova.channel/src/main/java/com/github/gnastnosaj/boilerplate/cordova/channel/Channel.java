@@ -117,7 +117,11 @@ public class Channel extends CordovaPlugin {
 
                                     @Override
                                     public void error(Throwable throwable) {
-                                        emitter.onError(throwable);
+                                        if (throwable == null) {
+                                            emitter.onError(throwable);
+                                        } else {
+                                            emitter.onError(new Throwable("Unknown Exception"));
+                                        }
                                     }
 
                                     @Override
