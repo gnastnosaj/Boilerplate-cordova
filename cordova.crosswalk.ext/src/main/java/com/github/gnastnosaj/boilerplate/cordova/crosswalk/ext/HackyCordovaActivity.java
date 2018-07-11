@@ -27,9 +27,11 @@ public abstract class HackyCordovaActivity extends com.github.gnastnosaj.boilerp
 
     private void whenLoadUrl(String url) {
         if (((XWalkWebViewEngine) appView.getEngine()).isXWalkReady()) {
-            for (HackyXWalkWorkaround workaround : HackyXWalkWorkaround.WORKAROUND) {
-                workaround.when((XWalkCordovaView) appView.getView(), url);
-            }
+            appView.getView().post(() -> {
+                for (HackyXWalkWorkaround workaround : HackyXWalkWorkaround.WORKAROUND) {
+                    workaround.when((XWalkCordovaView) appView.getView(), url);
+                }
+            });
         } else {
             appView.getView().postDelayed(() -> whenLoadUrl(url), 1000);
         }
