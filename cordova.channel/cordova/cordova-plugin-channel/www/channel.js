@@ -75,7 +75,7 @@ Channel.prototype.exec = function(scheme, data, onNext, onError, onComplete) {
     } catch (e) {
       console.error(e);
     }
-  }, "Channel", "exec", [scheme, data]);
+  }, "Channel", "exec", [scheme, data, task]);
 
   return task;
 };
@@ -84,6 +84,7 @@ Channel.prototype.cancel = function(task) {
   if (this.callbacks[task]) {
     delete this.callbacks[task];
   }
+  cordova.exec(null, null, "Channel", "cancel", [task])
 };
 
 Channel.prototype.subscribe = function(onNext, onError) {
