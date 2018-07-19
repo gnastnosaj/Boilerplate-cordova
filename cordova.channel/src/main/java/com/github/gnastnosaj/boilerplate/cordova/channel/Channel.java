@@ -1,6 +1,7 @@
 package com.github.gnastnosaj.boilerplate.cordova.channel;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.gnastnosaj.boilerplate.cordova.channel.middleware.ChannelEvent;
@@ -75,7 +76,7 @@ public class Channel extends CordovaPlugin {
                         String scheme = args.getString(0);
                         JSONArray data = args.getJSONArray(1);
                         String execTask = args.optString(2);
-                        execTask = (execTask == null ? "exec_" + System.currentTimeMillis() : execTask);
+                        execTask = TextUtils.isEmpty(execTask) ? "exec_" + System.currentTimeMillis() : execTask;
                         Log.d(TAG, "exec task: " + execTask);
                         exec(scheme, data, execTask, callbackContext);
                         break;
