@@ -9,7 +9,7 @@ import org.json.JSONArray;
  */
 
 public interface ChannelMiddleware {
-    void initialize(Context context, ChannelEventBus eventBus);
+    void initialize(Context context, ChannelEventBus eventBus) throws Throwable;
 
     boolean accept(String scheme);
 

@@ -53,17 +53,21 @@ public class Channel extends CordovaPlugin {
         context = cordova.getContext();
 
         for (ChannelMiddleware middleware : middlewares) {
-            middleware.initialize(context, new ChannelEventBus() {
-                @Override
-                public void send(ChannelEvent event) {
-                    RxBus.getInstance().send(event);
-                }
+            try {
+                middleware.initialize(context, new ChannelEventBus() {
+                    @Override
+                    public void send(ChannelEvent event) {
+                        RxBus.getInstance().send(event);
+                    }
 
-                @Override
-                public void post(String tag, ChannelEvent event) {
-                    RxBus.getInstance().post(tag, event);
-                }
-            });
+                    @Override
+                    public void post(String tag, ChannelEvent event) {
+                        RxBus.getInstance().post(tag, event);
+                    }
+                });
+            } catch (Throwable e) {
+                Log.e(TAG, "middleware initialize error", e);
+            }
         }
     }
 
